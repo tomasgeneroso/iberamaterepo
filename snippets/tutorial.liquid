@@ -1,2 +1,40 @@
-{% assign Hello_var = 'Hello!' %}
-{{ Hello_var }}
+{% comment %}
+  Normal way to assign a var
+  {% assign Hello_var = 'Hello!' %}
+  {{ Hello_var }}
+
+  IF NEGADO:
+  {%  unless condition %}
+    process
+  {% endunless %}
+
+  {% case product.type %}
+      {% when condition %}
+          <p>show condition</p>
+      {% else %}
+          <p>else</p>
+   {% endcase %}
+{% endcomment %}
+
+{% capture show_title %}
+  <div>
+    <p>
+        product title: 
+        {{ product.title }}
+        
+    </p>
+    {% for product in collection.products%}
+        <p style="
+            {% if forloop.first  %}
+                color: orange
+                {% elsif forloop.last %}
+                    color: blue
+            {% endif %}"
+        >
+
+            {{ forloop.index0 }} - {{ product.tags }}
+        </p>
+    {% endfor %}
+    </div>
+{% endcapture %}
+{{ show_title }}
