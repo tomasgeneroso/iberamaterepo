@@ -1,40 +1,34 @@
-{% comment %}
-  Normal way to assign a var
-  {% assign Hello_var = 'Hello!' %}
-  {{ Hello_var }}
-
-  IF NEGADO:
-  {%  unless condition %}
-    process
-  {% endunless %}
-
-  {% case product.type %}
-      {% when condition %}
-          <p>show condition</p>
-      {% else %}
-          <p>else</p>
-   {% endcase %}
-{% endcomment %}
-
+{%- liquid
+  assign products = collection.products
+  assign sort_products = products | sort: 'price'
+  assign tot = sort_products | map: 'price' | sum
+-%}
 {% capture show_title %}
-  <div>
-    <p>
-        product title: 
-        {{ product.title }}
-        
-    </p>
-    {% for product in collection.products%}
-        <p style="
-            {% if forloop.first  %}
-                color: orange
-                {% elsif forloop.last %}
-                    color: blue
-            {% endif %}"
-        >
+                <div style="margin-left:30px">
+                     {%for product in sort_products %}
+                    <h2>{{ product.title }}</h2>
+                    <p style="
+                        {%if forloop.first%}
+                        color: orange;
+                        {%elsif forloop.last%}
+                        color: blue;
+                        {%else%}
+                        color: black;
+                        {%endif%}">
+                        Price --> {{ product.price | money }}
+                        <br>
+                        {{ product.description | default: 'Default description' }}
+                    </p>
+                    <br>
+                    {%endfor%}
+                    
+                    <p><strong>PRICES TOTAL: {{ tot | money }}</strong></p>
+                </div>
+             {% endcapture %}
 
-            {{ forloop.index0 }} - {{ product.tags }}
-        </p>
-    {% endfor %}
-    </div>
-{% endcapture %}
 {{ show_title }}
+
+<script>
+  console.log('{{ tot }}');
+</script>
+<script src="{{ '../assets/console.js' | asset_url }}" defer></script>
