@@ -1,4 +1,4 @@
-<h2>{{ section.settings.title }}</h2>
+<h2 style="text-align: {{ section.settings.title_allignment}}">{{ section.settings.title }}</h2>
 {% schema %}
 {
   "name": "promotions-group",
@@ -9,6 +9,26 @@
       "type": "text",
       "label": "title",
       "id": "title"
+    },
+    {
+      "type": "select",
+      "label": "Title Alligment",
+      "id": "title_allignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ],
+      "default": "center"
     }
   ],
   "presets": [{ "name": "promotions-group" }]
