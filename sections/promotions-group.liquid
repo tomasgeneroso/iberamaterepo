@@ -1,7 +1,16 @@
+<h2>{{ section.settings.title }}</h2>
 {% schema %}
 {
   "name": "promotions-group",
-  "settings": [],
+  "tag": "section",
+  "class": "my-wrapper-class",
+  "settings": [
+    {
+      "type": "text",
+      "label": "title",
+      "id": "title"
+    }
+  ],
   "presets": [{ "name": "promotions-group" }]
 }
 {% endschema %}
