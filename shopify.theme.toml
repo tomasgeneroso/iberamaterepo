@@ -1,2 +1,5 @@
+{%comment%}
+Sirve para especificar variables de entorno y el store development
+{%endcomment%}
 [environments.development]
 store="https://iberamate.myshopify.com/"
