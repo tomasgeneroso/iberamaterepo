@@ -1,0 +1,23 @@
+{% comment %}
+  presets usamos para que nos aparezca en el editor
+{% endcomment %}
+<h1>{{ section.settings.title }}</h1>
+{% schema %}
+{
+  "name": "Promotion group",
+  "tag": "section",
+  "class": "my-wrapper-class",
+  "settings": [
+    {
+      "type": "text",
+      "label": "title",
+      "id": "titleId"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promotion group"
+    }
+  ]
+}
+{% endschema %}
